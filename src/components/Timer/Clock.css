@@ -1,0 +1,56 @@
+.clock {
+  position: relative;
+  display: inline-block;
+  transform: translateX(-2px);
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.clock--paused .clock__pauses {
+  opacity: 0.8;
+}
+
+.clock--paused .clock__minutes {
+  opacity: 0.3;
+}
+
+.clock--paused .clock__seconds {
+  opacity: 0.2;
+}
+
+.clock__minutes {
+  transition: opacity 300ms;
+  font-size: 4em;
+  line-height: 1;
+}
+
+.clock__seconds {
+  transition: opacity 300ms;
+  font-size: 1.2em;
+  position: absolute;
+  top: 5px;
+  right: -23px;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.clock__pauses {
+  transition: opacity 300ms, transform 300ms, bottom 300ms;
+  font-size: 1.2em;
+  color: #ff9451;
+  position: absolute;
+  opacity: 0.2;
+  white-space: nowrap;
+  bottom: 5px;
+  left: 100%;
+  transform: translateX(9px);
+}
+
+.clock__pauses--hidden {
+  opacity: 0;
+}
+
+.clock__pauses--small {
+  transform: translateX(3px) translateY(1px) scale(0.75);
+  bottom: 5px;
+}
