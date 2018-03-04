@@ -1,7 +1,8 @@
 .clock {
   position: relative;
   display: inline-block;
-  transform: translateX(-2px);
+  transform: translateY(-50%);
+  top: 50%;
   margin-bottom: 20px;
   z-index: 1;
 }

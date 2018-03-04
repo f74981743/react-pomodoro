@@ -21,7 +21,7 @@ class Process extends Component {
     const {interval, max} = this.props
     return [
       interval,
-      (max - interval) || 1
+      (max - interval) || 0
     ]
   }
   update () {
@@ -33,10 +33,6 @@ class Process extends Component {
       .classed('b-process__value', d => d.index === 0)
       .classed('b-process__bar', d => d.index !== 0)
       .each(function (d) { this.$angle = d; })
-      //.transition()
-      //.duration(200)
-      //.attrTween('d', this.arcTween())
-      //.style('fill', d => d.data.color);
     }, 500)
   }
   componentWillReceiveProps() {
@@ -75,10 +71,7 @@ class Process extends Component {
       .classed('process__value', d => d.index === 0)
       .classed('process__bar', d => d.index !== 0)
       .each(function (d) { this.$angle = d; }) // eslint-disable-line func-names
-    
-    //console.log(this.root)
-    //this.update()
-    //document.addEventListener('visibilitychange', this.update.bind(this))
+
   }
   render () {
     return (

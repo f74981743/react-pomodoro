@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Timer from './components/Timer'
+import ControlPanel from './components/ControlPanel'
 
 class App extends Component {
   constructor(props) {
@@ -14,20 +15,21 @@ class App extends Component {
     }
   }
   start (remainingTime) {
-    var minLeft = 0
-    var secLeft = 0
-    var interval = 0
+    var minLeft = this.state.minLeft
+    var secLeft = this.state.secLeft
+    var interval = this.state.interval
     clearInterval(this.countDown)
     this.countDown = setInterval(() => {
       remainingTime--
       minLeft = Math.floor(remainingTime / 60)
       secLeft = remainingTime - minLeft * 60
-      interval++
       if (remainingTime < 0) {
         remainingTime = 0
         minLeft = 0
         secLeft = 0
         clearInterval(this.countDown)
+      } else {
+        interval++
       }
       this.setState({
         remainingTime,
@@ -43,20 +45,16 @@ class App extends Component {
   handlePause () {
     clearInterval(this.countDown)
   }
-  componentDidMount () {
-    // this.start(this.state.remainingTime)
-  }
   render () {
     return (
       <div className="App">
         <Timer
-          minLeft={this.state.minLeft} 
+          minLeft={this.state.minLeft}
           secLeft={this.state.secLeft}
           interval={this.state.interval}
           max={this.state.max}
         />
-        <button onClick={this.handleStart.bind(this)}>Start</button>
-        <button onClick={this.handlePause.bind(this)}>Pause</button>
+        <ControlPanel handleStart={this.handleStart.bind(this)} handlePause={this.handlePause.bind(this)} />
       </div>
     );
   }
