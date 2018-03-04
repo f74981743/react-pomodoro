@@ -6,11 +6,11 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      remainingTime: 1 * 60,
+      remainingTime: 0.25 * 60,
       interval: 0,
-      max: 1 * 60,
-      minLeft: 1,
-      secLeft: 0
+      max: 0.25 * 60,
+      minLeft: 0,
+      secLeft: 15
     }
   }
   start (remainingTime) {
@@ -23,6 +23,12 @@ class App extends Component {
       minLeft = Math.floor(remainingTime / 60)
       secLeft = remainingTime - minLeft * 60
       interval++
+      if (remainingTime < 0) {
+        remainingTime = 0
+        minLeft = 0
+        secLeft = 0
+        clearInterval(this.countDown)
+      }
       this.setState({
         remainingTime,
         minLeft,
