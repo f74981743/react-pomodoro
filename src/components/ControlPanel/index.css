@@ -1,0 +1,21 @@
+.control-panel a {
+  display: inline-block;
+  padding: 6px 5px 5px;
+  min-width: 90px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 90px; 
+}
+
+.control-panel a:nth-child(2) {
+  margin-left: 5px;
+}
+
+.control-panel .container {
+  margin: 0 auto;
+  max-width: 600px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}

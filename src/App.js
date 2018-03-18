@@ -11,13 +11,20 @@ class App extends Component {
       interval: 0,
       max: 0.25 * 60,
       minLeft: 0,
-      secLeft: 15
+      secLeft: 15,
+      isPause: false
     }
   }
   start (remainingTime) {
     var minLeft = this.state.minLeft
     var secLeft = this.state.secLeft
     var interval = this.state.interval
+    
+    if (!this.state.isPause) {
+      remainingTime = 0.25 * 60
+      interval = 1
+    }
+
     clearInterval(this.countDown)
     this.countDown = setInterval(() => {
       remainingTime--
@@ -41,9 +48,15 @@ class App extends Component {
   }
   handleStart () {
     this.start(this.state.remainingTime)
+    this.setState({
+      isPause: false
+    })
   }
   handlePause () {
     clearInterval(this.countDown)
+    this.setState({
+      isPause: true
+    })
   }
   render () {
     return (
