@@ -1,8 +1,8 @@
+import { interpolate } from 'd3-interpolate';
+import { select } from 'd3-selection';
+import { arc, pie } from 'd3-shape';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { select } from 'd3-selection';
-import { interpolate } from 'd3-interpolate';
-import { pie, arc } from 'd3-shape';
 import './process.css';
 
 class Process extends Component {

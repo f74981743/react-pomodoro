@@ -6,8 +6,8 @@ class Clock extends Component {
     const { minLeft, secLeft } = this.props;
     return (
       <div className="clock">
-        <div className="clock__minutes">{minLeft}</div>
-        <div className="clock__seconds">{secLeft}</div>
+        <div className="clock__minutes"> {minLeft} </div>
+        <div className="clock__seconds"> {secLeft} </div>
         <div className="clock__pauses" />
       </div>
     );
