@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Clock from './Clock.js';
 import Process from './Process.js';
-import './index.css';
+import './index.scss';
 
 class Timer extends Component {
   render() {

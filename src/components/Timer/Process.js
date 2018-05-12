@@ -3,7 +3,7 @@ import { select } from 'd3-selection';
 import { arc, pie } from 'd3-shape';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './process.css';
+import './process.scss';
 
 class Process extends Component {
   constructor(props) {

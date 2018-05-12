@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import ControlPanel from './components/ControlPanel';
 import Timer from './components/Timer';
 
@@ -7,11 +7,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      remainingTime: 0.25 * 60,
+      remainingTime: 25 * 60,
       interval: 0,
-      max: 0.25 * 60,
+      max: 25 * 60,
       minLeft: 0,
-      secLeft: 15,
+      secLeft: 25 * 60,
       isPause: false,
     };
   }
@@ -24,11 +24,11 @@ class App extends Component {
           secLeft={this.state.secLeft}
           interval={this.state.interval}
           max={this.state.max}
-        />{' '}
+        />
         <ControlPanel
           handleStart={this.handleStart.bind(this)}
           handlePause={this.handlePause.bind(this)}
-        />{' '}
+        />
       </div>
     );
   }
@@ -39,7 +39,7 @@ class App extends Component {
     var interval = this.state.interval;
 
     if (!this.state.isPause) {
-      remainingTime = 0.25 * 60;
+      remainingTime = 25 * 60;
       interval = 1;
     }
 
