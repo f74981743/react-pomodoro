@@ -3,42 +3,47 @@ import './App.scss';
 import ControlPanel from './components/ControlPanel';
 import Timer from './components/Timer';
 
+const INIT_MIN = 25;
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      remainingTime: 25 * 60,
+      remainingTime: INIT_MIN * 60,
       interval: 0,
-      max: 25 * 60,
-      minLeft: 0,
-      secLeft: 25 * 60,
-      isPause: false,
+      minLeft: INIT_MIN,
+      secLeft: 0,
     };
+
+    this.isPause = false;
+    this.max = INIT_MIN * 60;
+
+    this.handleStart = this.handleStart.bind(this);
+    this.handlePause = this.handlePause.bind(this);
   }
 
   render() {
+    const { minLeft, secLeft, interval } = this.state;
     return (
       <div className="App">
         <Timer
-          minLeft={this.state.minLeft}
-          secLeft={this.state.secLeft}
-          interval={this.state.interval}
-          max={this.state.max}
+          minLeft={minLeft}
+          secLeft={secLeft}
+          interval={interval}
+          max={this.max}
         />
         <ControlPanel
-          handleStart={this.handleStart.bind(this)}
-          handlePause={this.handlePause.bind(this)}
+          handleStart={this.handleStart}
+          handlePause={this.handlePause}
         />
       </div>
     );
   }
 
   start(remainingTime) {
-    var minLeft = this.state.minLeft;
-    var secLeft = this.state.secLeft;
-    var interval = this.state.interval;
+    let { minLeft, secLeft, interval } = this.state;
 
-    if (!this.state.isPause) {
+    if (!this.isPause) {
       remainingTime = 25 * 60;
       interval = 1;
     }
@@ -67,16 +72,12 @@ class App extends Component {
 
   handleStart() {
     this.start(this.state.remainingTime);
-    this.setState({
-      isPause: false,
-    });
+    this.isPause = false;
   }
 
   handlePause() {
     clearInterval(this.countDown);
-    this.setState({
-      isPause: true,
-    });
+    this.isPause = true;
   }
 }
 

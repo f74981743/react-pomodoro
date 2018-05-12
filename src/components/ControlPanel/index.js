@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './index.scss';
 
-class ControlPanel extends Component {
+class ControlPanel extends PureComponent {
   render() {
+    const { handleStart, handlePause } = this.props;
     return (
       <div className="control-panel">
         <div className="container">
-          <a
-            onClick={e => {
-              this.props.handleStart();
-            }}
-          >
-            Start
-          </a>
-          <a onClick={this.props.handlePause}>Pause</a>
+          <a onClick={handleStart}>Start</a>
+          <a onClick={handlePause}>Pause</a>
         </div>
       </div>
     );
