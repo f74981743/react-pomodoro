@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Clock from './Clock.js';
 import Process from './Process.js';
+import Target from './Target.js';
 import './index.scss';
 
 class Timer extends Component {
@@ -10,6 +11,7 @@ class Timer extends Component {
       <div className="timer">
         <Clock minLeft={minLeft} secLeft={secLeft} />
         <Process interval={interval} max={max} />
+        <Target />
       </div>
     );
   }

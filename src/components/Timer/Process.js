@@ -9,8 +9,8 @@ class Process extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 500,
-      height: 500,
+      width: 470,
+      height: 470,
       weight: 4,
     };
   }
@@ -56,7 +56,7 @@ class Process extends Component {
       .classed('process__bar', d => d.index !== 0)
       .each(function(d) {
         this.$angle = d;
-      }); // eslint-disable-line func-names
+      });
   }
 
   render() {
