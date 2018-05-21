@@ -69,21 +69,23 @@ class Target extends Component {
 
   getValues() {
     const items = new Array(this.GOAL).fill();
-    return items.map(item => {
+    return items.map((item, index) => {
       return {
+        index,
         value: 1,
       };
     });
   }
 
   update() {
+    const { target } = this.props;
     setTimeout(() => {
       this.root
         .selectAll('path')
         .data(this.pie(this.getValues()))
         .attr('d', this.arc)
-        .classed('b-process__value', d => d.index === 0)
-        .classed('b-process__bar', d => d.index !== 0)
+        .classed('target__item--success', d => d.index + 1 <= target)
+        .classed('target__item', d => d.index + 1 !== target)
         .each(function(d) {
           this.$angle = d;
         });

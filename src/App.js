@@ -13,6 +13,7 @@ class App extends Component {
       interval: 0,
       minLeft: INIT_MIN,
       secLeft: 0,
+      target: 0,
     };
 
     this.isPause = false;
@@ -23,7 +24,7 @@ class App extends Component {
   }
 
   render() {
-    const { minLeft, secLeft, interval } = this.state;
+    const { minLeft, secLeft, interval, target } = this.state;
     return (
       <div className="App">
         <Timer
@@ -31,6 +32,7 @@ class App extends Component {
           secLeft={secLeft}
           interval={interval}
           max={this.max}
+          target={target}
         />
         <ControlPanel
           handleStart={this.handleStart}
@@ -41,10 +43,10 @@ class App extends Component {
   }
 
   start(remainingTime) {
-    let { minLeft, secLeft, interval } = this.state;
+    let { minLeft, secLeft, interval, target } = this.state;
 
     if (!this.isPause) {
-      remainingTime = 25 * 60;
+      remainingTime = INIT_MIN * 60;
       interval = 1;
     }
 
@@ -57,6 +59,7 @@ class App extends Component {
         remainingTime = 0;
         minLeft = 0;
         secLeft = 0;
+        target += 1;
         clearInterval(this.countDown);
       } else {
         interval++;
@@ -66,6 +69,7 @@ class App extends Component {
         minLeft,
         secLeft,
         interval,
+        target,
       });
     }, 1000);
   }
