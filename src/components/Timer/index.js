@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Clock from './Clock.js';
+import Heatmap from './Heatmap.js';
 import Process from './Process.js';
 import Target from './Target.js';
 import './index.scss';
@@ -12,6 +13,7 @@ class Timer extends Component {
         <Clock minLeft={minLeft} secLeft={secLeft} />
         <Process interval={interval} max={max} />
         <Target target={target} />
+        <Heatmap />
       </div>
     );
   }

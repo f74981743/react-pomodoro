@@ -1,0 +1,15 @@
+.heatmap {
+  position: absolute;
+  top: calc(50% + 100px);
+  display: flex;
+  flex-flow: row wrap;
+  width: 160px;
+  height: 48px;
+  &__item {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    margin-left: 3px;
+  }
+}
