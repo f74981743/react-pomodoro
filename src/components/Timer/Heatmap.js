@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import './Heatmap.scss';
 
@@ -9,6 +10,12 @@ class Heatmap extends Component {
     this.state = {
       dateAry: [],
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (!_.isEqual(this.props, nextProps) || !_.isEqual(this.state, nextState))
+      return true;
+    return false;
   }
 
   componentDidMount() {
@@ -35,7 +42,9 @@ class Heatmap extends Component {
         }}
         className="heatmap"
       >
-        {dateAry.map(item => <div className="heatmap__item" />)}
+        {dateAry.map((item, index) => (
+          <div key={index} className="heatmap__item" />
+        ))}
       </div>
     );
   }

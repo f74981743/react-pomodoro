@@ -23,6 +23,19 @@ class App extends Component {
     this.handlePause = this.handlePause.bind(this);
   }
 
+  componentDidMount() {
+    document.addEventListener('keyup', e => {
+      if (e.keyCode === 32) {
+        // space bar
+        if (this.isPause) {
+          this.handleStart();
+        } else {
+          this.handlePause();
+        }
+      }
+    });
+  }
+
   render() {
     const { minLeft, secLeft, interval, target } = this.state;
     return (

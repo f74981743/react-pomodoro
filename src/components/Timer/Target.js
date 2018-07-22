@@ -1,6 +1,7 @@
 import { interpolate } from 'd3-interpolate';
 import { select } from 'd3-selection';
 import { arc, pie } from 'd3-shape';
+import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './target.scss';
@@ -16,6 +17,11 @@ class Target extends Component {
     this.GOAL = 8;
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (!_.isEqual(this.props, nextProps)) return true;
+    return false;
+  }
+
   componentWillReceiveProps() {
     this.update();
   }
@@ -24,7 +30,7 @@ class Target extends Component {
     const self = this;
     const svg = ReactDOM.findDOMNode(this.refs.svg);
 
-    this.arcTween = function(angle) {
+    this.arcTween = angle => {
       const i = interpolate(this.$angle, angle);
       this.$angle = i(0);
       return t => self.arc(i(t));
@@ -54,7 +60,7 @@ class Target extends Component {
       .append('path')
       .attr('d', this.arc)
       .classed('target__item', true)
-      .each(function(d) {
+      .each(d => {
         this.$angle = d;
       });
   }
@@ -86,7 +92,7 @@ class Target extends Component {
         .attr('d', this.arc)
         .classed('target__item--success', d => d.index + 1 <= target)
         .classed('target__item', d => d.index + 1 !== target)
-        .each(function(d) {
+        .each(d => {
           this.$angle = d;
         });
     }, 500);
