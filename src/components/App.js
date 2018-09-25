@@ -1,7 +1,7 @@
+import ControlPanel from 'components/ControlPanel';
 import React, { Component } from 'react';
 import './App.scss';
-import ControlPanel from './components/ControlPanel';
-import Timer from './components/Timer';
+import Timer from './Timer';
 
 const INIT_MIN = 25;
 

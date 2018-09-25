@@ -1,7 +1,7 @@
+import App from 'components/App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { whyDidYouUpdate } from 'why-did-you-update';
-import App from './App';
 import './index.scss';
 import registerServiceWorker from './registerServiceWorker';
 
