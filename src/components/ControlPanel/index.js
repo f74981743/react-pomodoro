@@ -7,8 +7,12 @@ class ControlPanel extends PureComponent {
     return (
       <div className="control-panel">
         <div className="container">
-          <a onClick={handleStart}>Start</a>
-          <a onClick={handlePause}>Pause</a>
+          <a className="control-panel__start-btn" onClick={handleStart}>
+            Start
+          </a>
+          <a className="control-panel__pause-btn" onClick={handlePause}>
+            Pause
+          </a>
         </div>
       </div>
     );
